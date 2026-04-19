@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCardTilt } from "./useCardTilt";
 
 const TECH = ["Next.js", "React", "TypeScript", "PostgreSQL", "OpenAI API"];
@@ -9,6 +9,12 @@ export default function GoosegradeCard() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const { onMouseMove, reset } = useCardTilt(cardRef);
+  const [isTouch, setIsTouch] = useState(false);
+  useEffect(() => {
+    const touch = window.matchMedia("(hover: none)").matches;
+    setIsTouch(touch);
+    if (touch) videoRef.current?.play().catch(() => {});
+  }, []);
 
   const play = () => {
     videoRef.current?.play().catch(() => {});
@@ -45,6 +51,7 @@ export default function GoosegradeCard() {
           muted
           loop
           playsInline
+          autoPlay={isTouch}
           preload="metadata"
           className="w-full h-full object-cover"
         />

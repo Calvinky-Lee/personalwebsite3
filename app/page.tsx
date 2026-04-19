@@ -10,7 +10,7 @@ export default function Home() {
     <main
       className="main-layout w-full flex flex-col md:flex-row"
       style={{
-        paddingTop: 'clamp(80px, 12vh, 160px)',
+        paddingTop: 'clamp(80px, 14vh, 200px)',
         paddingLeft: 'clamp(24px, 3vw, 48px)',
         paddingRight: 0,
         paddingBottom: 0,
@@ -37,8 +37,8 @@ export default function Home() {
           {/* Intro Section - Heading & Bio */}
           <div style={{ marginBottom: 'clamp(16px, 2vw, 24px)' }}>
             <h1
-              className="font-medium text-[#111] tracking-tight leading-[1.05] underline decoration-2 underline-offset-[6px]"
-              style={{ fontSize: 'clamp(45px, 5vw, 72px)', marginBottom: 'clamp(10px, 1.5vw, 20px)' }}
+              className="font-medium text-[#111] tracking-tight leading-[1.05] underline decoration-2 underline-offset-[6px] whitespace-nowrap"
+              style={{ fontSize: 'clamp(26px, 5vw, 72px)', marginBottom: 'clamp(10px, 1.5vw, 20px)' }}
             >
               hi, I&apos;m calvin lee!
             </h1>

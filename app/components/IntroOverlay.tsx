@@ -8,6 +8,11 @@ export default function IntroOverlay() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    if (window.innerWidth < 768) {
+      document.body.classList.add("intro-done");
+      setHidden(true);
+      return;
+    }
     const v = videoRef.current;
     if (!v) return;
     const p = v.play();

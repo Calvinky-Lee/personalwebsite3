@@ -109,7 +109,10 @@ body.intro-done .intro-white-center {
   }
 }
 
-/* Desktop-only right panel edge-extension + scroll */
+/* Right-panel inner border — rounded on mobile, sharp corners on desktop */
+.right-inner {
+  border-radius: 20px;
+}
 @media (min-width: 768px) {
   .right-glass {
     border-radius: 24px 0 0 0 !important;
