@@ -17,11 +17,17 @@ export default function IntroOverlay() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onTimeUpdate = () => {
+    const v = videoRef.current;
+    if (!v || !v.duration) return;
+    if (v.duration - v.currentTime < 1.2) finish();
+  };
+
   const finish = () => {
     if (fading) return;
     setFading(true);
     document.body.classList.add("intro-done");
-    window.setTimeout(() => setHidden(true), 900);
+    window.setTimeout(() => setHidden(true), 500);
   };
 
   if (hidden) return null;
@@ -29,7 +35,7 @@ export default function IntroOverlay() {
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[100] flex items-center justify-center pointer-events-none transition-opacity duration-[900ms] ease-out ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center pointer-events-none transition-opacity duration-[500ms] ease-out ${
         fading ? "opacity-0" : "opacity-100"
       }`}
     >
@@ -40,6 +46,7 @@ export default function IntroOverlay() {
         playsInline
         autoPlay
         preload="auto"
+        onTimeUpdate={onTimeUpdate}
         onEnded={finish}
         onError={finish}
         className="max-w-[36vw] max-h-[42vh] object-contain"

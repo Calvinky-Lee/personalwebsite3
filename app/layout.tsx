@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import IntroOverlay from "./components/IntroOverlay";
 
@@ -78,6 +79,7 @@ export default function RootLayout({
         </div>
 
         <IntroOverlay />
+        <Analytics />
       </body>
     </html>
   );

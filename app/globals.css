@@ -67,11 +67,42 @@ body {
 
 .intro-white-center {
   opacity: 1;
-  transition: opacity 900ms ease;
+  transition: opacity 500ms ease;
 }
 body.intro-done .intro-white-center {
   opacity: 0;
 }
+
+/* Ambient pulsing glow behind glass card */
+@keyframes glow-breathe {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.card-glow {
+  position: absolute;
+  inset: -60px;
+  border-radius: 60px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.6) 35%,
+    rgba(255, 255, 255, 0.2) 60%,
+    transparent 80%
+  );
+  filter: blur(55px);
+  pointer-events: none;
+  z-index: 0;
+  animation: glow-breathe 7s ease-in-out infinite;
+}
+
+
 
 @keyframes slide-in-right {
   from {

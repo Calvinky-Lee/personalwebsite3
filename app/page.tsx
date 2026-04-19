@@ -21,9 +21,12 @@ export default function Home() {
       {/* Left Panel Container */}
       <div className="flex-1 relative animate-slide-in-left self-start" style={{ maxWidth: '50%', marginBottom: 'clamp(24px, 3vw, 48px)' }}>
 
+        {/* Ambient pulsing glow behind card */}
+        <div className="card-glow" aria-hidden="true"></div>
+
         {/* Glass Card */}
         <div
-          className="flex flex-col apple-glass-card h-full"
+          className="flex flex-col apple-glass-card h-full relative"
           style={{ padding: 'clamp(4px, 0.5vw, 6px)' }}
         >
           {/* Inner Border Wrapper */}
