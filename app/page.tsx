@@ -8,7 +8,7 @@ export default function Home() {
     <>
     <ProjectsScrollProxy targetId="projects-scroll" />
     <main
-      className="w-full flex flex-row"
+      className="main-layout w-full flex flex-col md:flex-row"
       style={{
         paddingTop: 'clamp(80px, 12vh, 160px)',
         paddingLeft: 'clamp(24px, 3vw, 48px)',
@@ -19,7 +19,7 @@ export default function Home() {
       }}
     >
       {/* Left Panel Container */}
-      <div className="flex-1 relative animate-slide-in-left self-start" style={{ maxWidth: '50%', marginBottom: 'clamp(24px, 3vw, 48px)' }}>
+      <div className="left-panel relative animate-slide-in-left w-full md:flex-1 md:max-w-[50%] md:self-start" style={{ marginBottom: 'clamp(24px, 3vw, 48px)' }}>
 
         {/* Ambient pulsing glow behind card */}
         <div className="card-glow" aria-hidden="true"></div>
@@ -169,24 +169,18 @@ export default function Home() {
 
       {/* Right Panel - Projects */}
       <div
-        className="flex-1 relative animate-slide-in-right self-start"
-        style={{
-          maxWidth: '50%',
-          position: 'sticky',
-          top: '64px',
-          height: 'calc(100vh - 64px)',
-        }}
+        className="right-panel w-full relative animate-slide-in-right md:flex-1 md:max-w-[50%] md:self-start md:sticky md:top-16 md:h-[calc(100vh-64px)]"
       >
         {/* Glass Card */}
         <div
-          className="flex flex-col apple-glass-card h-full"
-          style={{ padding: 'clamp(4px, 0.5vw, 6px)', borderRadius: '24px 0 0 0' }}
+          className="right-glass flex flex-col apple-glass-card h-full"
+          style={{ padding: 'clamp(4px, 0.5vw, 6px)' }}
         >
           {/* Inner Border Wrapper */}
           <div
             id="projects-scroll"
-            className="flex flex-col h-full border border-black/[0.08] projects-scroll overflow-y-auto"
-            style={{ padding: 'clamp(20px, 2.5vw, 32px)', borderRadius: '20px 0 0 0' }}
+            className="right-inner flex flex-col h-full border border-black/[0.08] projects-scroll md:overflow-y-auto"
+            style={{ padding: 'clamp(20px, 2.5vw, 32px)' }}
           >
             <p
               className="font-medium text-[#222] shrink-0"

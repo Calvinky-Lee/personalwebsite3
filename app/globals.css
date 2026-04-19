@@ -16,7 +16,27 @@
 
 html, body {
   overscroll-behavior: none;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  html, body {
+    overflow: hidden;
+  }
+}
+
+/* Disable cursor-dependent effects on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .project-card {
+    transform: none !important;
+  }
+  .project-card::before {
+    display: none;
+  }
+  .card-glow {
+    animation: none;
+    opacity: 0.4;
+  }
 }
 
 .projects-scroll {
@@ -71,6 +91,32 @@ body {
 }
 body.intro-done .intro-white-center {
   opacity: 0;
+}
+
+/* Mobile-only layout overrides (desktop styles are inline) */
+@media (max-width: 767px) {
+  .main-layout {
+    padding-right: clamp(16px, 3vw, 48px) !important;
+    padding-bottom: clamp(24px, 3vw, 48px) !important;
+    padding-left: clamp(16px, 3vw, 48px) !important;
+    gap: clamp(24px, 4.5vw, 72px) !important;
+  }
+  .left-panel {
+    margin-bottom: 0 !important;
+  }
+  .webring-nav {
+    margin-left: 8px !important;
+  }
+}
+
+/* Desktop-only right panel edge-extension + scroll */
+@media (min-width: 768px) {
+  .right-glass {
+    border-radius: 24px 0 0 0 !important;
+  }
+  .right-inner {
+    border-radius: 20px 0 0 0;
+  }
 }
 
 /* Ambient pulsing glow behind glass card */

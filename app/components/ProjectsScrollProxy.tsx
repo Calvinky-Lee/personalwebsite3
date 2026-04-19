@@ -5,6 +5,7 @@ import { useEffect } from "react";
 export default function ProjectsScrollProxy({ targetId }: { targetId: string }) {
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
+      if (window.innerWidth < 768) return;
       const target = document.getElementById(targetId);
       if (!target) return;
       if (target.contains(e.target as Node)) return;

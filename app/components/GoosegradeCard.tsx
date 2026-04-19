@@ -33,11 +33,11 @@ export default function GoosegradeCard() {
       onMouseEnter={play}
       onMouseMove={onMouseMove}
       onMouseLeave={onLeave}
-      className="project-card flex items-stretch border border-black/[0.12] rounded-[16px] bg-white overflow-hidden"
+      className="project-card flex flex-col md:flex-row md:items-stretch border border-black/[0.12] rounded-[16px] bg-white overflow-hidden"
     >
       <div
-        className="shrink-0 overflow-hidden"
-        style={{ aspectRatio: "16 / 9", width: "clamp(320px, 56%, 500px)" }}
+        className="project-video shrink-0 overflow-hidden w-full md:w-[clamp(320px,56%,500px)]"
+        style={{ aspectRatio: "16 / 9" }}
       >
         <video
           ref={videoRef}

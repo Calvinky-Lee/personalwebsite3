@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import IntroOverlay from "./components/IntroOverlay";
@@ -6,6 +6,12 @@ import IntroOverlay from "./components/IntroOverlay";
 export const metadata: Metadata = {
   title: "Calvin Lee",
   description: "Personal website of Calvin Lee",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -20,7 +26,7 @@ export default function RootLayout({
         <header className="fixed top-0 left-0 right-0 h-16 w-full z-50 bg-[#f3f4f6]/90 backdrop-blur-md border-b border-black/[0.03] animate-slide-in-top">
           <div className="w-full max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center">
           {/* CS Webring Nav - Prev / Ring / Next */}
-          <div className="flex items-center text-sm font-medium font-sans" style={{ gap: '4px', marginLeft: 'clamp(32px, 4vw, 72px)' }}>
+          <div className="webring-nav flex items-center text-sm font-medium font-sans" style={{ gap: '4px', marginLeft: 'clamp(32px, 4vw, 72px)' }}>
             <a href="https://cs.uwatering.com/#calvin-lee.ca?nav=prev" aria-label="Previous site on CS Webring" className="opacity-60 hover:opacity-100 transition-opacity">
               <svg className="w-[18px] h-[18px] fill-none stroke-current" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
             </a>
@@ -34,7 +40,7 @@ export default function RootLayout({
           <div className="flex items-center text-sm font-medium font-sans">
 
             {/* Social Icons Group */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3 md:gap-6">
             <a href="mailto:calvin.ky.lee@gmail.com" aria-label="Email" className="opacity-60 hover:opacity-100 transition-opacity">
               <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
             </a>
