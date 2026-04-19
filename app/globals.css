@@ -1,0 +1,301 @@
+@import "tailwindcss";
+
+:root {
+  --bg-color: #f3f4f6;
+  --text-main: #111111;
+  --text-muted: #666666;
+  --border-color: #e5e5e5;
+  --hover-bg: #e5e7eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overscroll-behavior: none;
+  overflow: hidden;
+}
+
+.projects-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+.projects-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.projects-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.projects-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+.projects-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: #fafafa;
+  color: var(--text-main);
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Liquid Blob Animations - Subtle Periphery Movement */
+@keyframes blob-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(1% , -2%) scale(1.05); }
+  66% { transform: translate(-0.5%, 1%) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes blob-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-1%, 1.5%) scale(1.05); }
+  66% { transform: translate(1.5%, -0.5%) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.animate-blob-1 { animation: blob-1 30s infinite alternate ease-in-out; }
+.animate-blob-2 { animation: blob-2 35s infinite alternate ease-in-out; }
+.animate-blob-3 { animation: blob-1 32s infinite reverse alternate ease-in-out; }
+.animate-blob-4 { animation: blob-2 28s infinite reverse alternate ease-in-out; }
+
+.intro-white-center {
+  opacity: 1;
+  transition: opacity 900ms ease;
+}
+body.intro-done .intro-white-center {
+  opacity: 0;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translate3d(100%, 0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-top {
+  from {
+    transform: translate3d(0, -100%, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+  will-change: transform, opacity;
+}
+.animate-slide-in-left {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+  will-change: transform, opacity;
+}
+.animate-slide-in-top {
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+  will-change: transform, opacity;
+}
+
+body.intro-done .animate-slide-in-right {
+  animation: slide-in-right 1300ms cubic-bezier(0.33, 0.1, 0.45, 1) both;
+}
+body.intro-done .animate-slide-in-left {
+  animation: slide-in-left 1300ms cubic-bezier(0.33, 0.1, 0.45, 1) both;
+}
+body.intro-done .animate-slide-in-top {
+  animation: slide-in-top 1300ms cubic-bezier(0.33, 0.1, 0.45, 1) both;
+}
+body.intro-done .stagger-item {
+  animation: stagger-fade-up 700ms cubic-bezier(0.33, 0.1, 0.45, 1) both;
+  animation-delay: var(--stagger-delay, 0ms);
+}
+
+.project-card-perspective {
+  perspective: 900px;
+}
+
+.project-card {
+  position: relative;
+  isolation: isolate;
+  transition: box-shadow 350ms ease, border-color 350ms ease, transform 120ms ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.project-card:hover {
+  border-color: rgba(234, 179, 8, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(234, 179, 8, 0.14),
+    0 0 18px rgba(234, 179, 8, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Cursor spotlight overlay on project cards */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(250, 204, 21, 0.12),
+    rgba(250, 204, 21, 0.04) 30%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 300ms ease;
+  z-index: 4;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Staggered entrance for hero content */
+@keyframes stagger-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* ========== Liquid Glass 2.5 - Max Readability ========== */
+.apple-glass-card {
+  position: relative;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.90) 50%,
+    rgba(255, 255, 255, 0.94) 100%
+  );
+  backdrop-filter: saturate(120%) blur(64px) brightness(1.15);
+  -webkit-backdrop-filter: saturate(120%) blur(64px) brightness(1.15);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    /* Deep outer buoyancy */
+    0 40px 100px -20px rgba(0, 0, 0, 0.05),
+    0 20px 40px -10px rgba(0, 0, 0, 0.03),
+    /* Inner physical highlights */
+    inset 0 1px 0 0 rgba(255, 255, 255, 1);
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 24px;
+}
+
+
+/* Fine-Grained Frosted Texture */
+.apple-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.apple-glass-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Thri5 hover banner - static banner reveal */
+.thri5-card {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 500ms ease;
+}
+
+.thri5-banner {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.thri5-card:hover .thri5-banner {
+  opacity: 1;
+}
+
+.thri5-banner-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    #ffffff 8%,
+    #ececed 18%,
+    #c4c4c6 32%,
+    #9a9a9e 48%,
+    #6e6e72 68%,
+    #3a3a3d 85%,
+    #1a1a1a 100%
+  );
+}
+
+.thri5-banner-logo {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 180%;
+  width: auto;
+  pointer-events: none;
+  object-fit: contain;
+}
+
+.thri5-card > :not(.thri5-banner):not(span) {
+  position: relative;
+  z-index: 2;
+}
+
+.thri5-card > span,
+.thri5-role {
+  transition: opacity 300ms ease;
+}
+
+.thri5-card:hover > span,
+.thri5-card:hover .thri5-role {
+  opacity: 0;
+}
