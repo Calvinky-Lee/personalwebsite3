@@ -8,6 +8,11 @@ export default function IntroOverlay() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     if (window.innerWidth < 768) {
       document.body.classList.add("intro-done");
       setHidden(true);

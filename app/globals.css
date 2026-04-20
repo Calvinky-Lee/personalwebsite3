@@ -104,9 +104,6 @@ body.intro-done .intro-white-center {
   .left-panel {
     margin-bottom: 0 !important;
   }
-  .webring-nav {
-    margin-left: 8px !important;
-  }
 }
 
 /* Right-panel inner border — rounded on mobile, sharp corners on desktop */

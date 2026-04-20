@@ -10,16 +10,15 @@ export default function Home() {
     <main
       className="main-layout w-full flex flex-col md:flex-row"
       style={{
-        paddingTop: 'clamp(80px, 14vh, 200px)',
         paddingLeft: 'clamp(24px, 3vw, 48px)',
         paddingRight: 0,
         paddingBottom: 0,
         gap: 'clamp(36px, 4.5vw, 72px)',
-        minHeight: 'calc(100vh - 64px)',
+        minHeight: 'calc(100vh - 150px)',
       }}
     >
       {/* Left Panel Container */}
-      <div className="left-panel relative animate-slide-in-left w-full md:flex-1 md:max-w-[50%] md:self-start" style={{ marginBottom: 'clamp(24px, 3vw, 48px)' }}>
+      <div className="left-panel relative animate-slide-in-left w-full md:flex-1 md:max-w-[50%]" style={{ marginBottom: 'clamp(24px, 3vw, 48px)' }}>
 
         {/* Ambient pulsing glow behind card */}
         <div className="card-glow" aria-hidden="true"></div>
@@ -32,7 +31,7 @@ export default function Home() {
           {/* Inner Border Wrapper */}
           <div
              className="flex flex-col h-full border border-black/[0.08] rounded-[20px]"
-             style={{ padding: 'clamp(20px, 2.5vw, 32px)' }}
+             style={{ padding: 'clamp(20px, 2.5vw, 32px) clamp(20px, 2.5vw, 32px) clamp(32px, 3.5vw, 48px) clamp(20px, 2.5vw, 32px)' }}
           >
           {/* Intro Section - Heading & Bio */}
           <div style={{ marginBottom: 'clamp(16px, 2vw, 24px)' }}>
@@ -169,7 +168,7 @@ export default function Home() {
 
       {/* Right Panel - Projects */}
       <div
-        className="right-panel w-full relative animate-slide-in-right md:flex-1 md:max-w-[50%] md:self-start md:sticky md:top-16 md:h-[calc(100vh-64px)]"
+        className="right-panel w-full relative animate-slide-in-right md:flex-1 md:max-w-[50%] md:self-start md:sticky md:top-16 md:h-[calc(100vh_-_90px)] md:-mb-[60px]"
       >
         {/* Glass Card */}
         <div
@@ -191,7 +190,7 @@ export default function Home() {
 
             <div
               className="flex flex-col font-sans"
-              style={{ gap: 'clamp(12px, 1.5vw, 20px)', marginTop: 'clamp(12px, 1.5vw, 20px)' }}
+              style={{ gap: 'clamp(12px, 1.5vw, 20px)', marginTop: 'clamp(12px, 1.5vw, 20px)', paddingBottom: 'clamp(20px, 2.5vw, 40px)' }}
             >
               <GoosegradeCard />
               <FootballAnalysisCard />
